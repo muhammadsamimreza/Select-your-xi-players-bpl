@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Player = ({ player }) => {
   console.log(player);
@@ -12,6 +12,7 @@ const Player = ({ player }) => {
     price,
     rating,
   } = player;
+   const [isSeclected, setSelected] = useState(false);
   return (
     <div>
       <div className="card bg-base-100 shadow-sm">
@@ -43,7 +44,7 @@ const Player = ({ player }) => {
                 <span>$</span>
                 <span>{price}</span>
             </div>
-            <button className="btn">Buy Now</button>
+            <button className={`btn ${isSeclected?"bg-black text-white":""}`}  onClick={()=>setSelected(!isSeclected)}>{isSeclected?"Alredy Choosen":"Choose Player"}</button>
           </div>
         </div>
       </div>
