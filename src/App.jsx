@@ -8,13 +8,13 @@ import Header from "./components/Header/Header";
 const playersPromise = fetch("/public/player.json").then((res) => res.json());
 
 function App() {
-  const singlePlayer = ({ player }) => {
-    console.log(player);
-  };
   const [purchase, setPurchase] = useState(true);
+  const [availableBalance, setBalance] = useState(60000000);
+  const [selectPlayer, setSelectPlayer] = useState([]);
+
   return (
     <div className="bg-green-100">
-      <Navbar></Navbar>
+      <Navbar availableBalance={availableBalance}></Navbar>
       <Header setPurchase={setPurchase} purchase={purchase}></Header>
 
       {purchase ? (
@@ -24,12 +24,15 @@ function App() {
           }
         >
           <Players
-            singlePlayer={singlePlayer}
+            setSelectPlayer={setSelectPlayer}
+            selectPlayer={selectPlayer}
+            setBalance={setBalance}
+            availableBalance={availableBalance}
             playersPromise={playersPromise}
           ></Players>
         </Suspense>
       ) : (
-        <Selected></Selected>
+        <Selected selectPlayer={selectPlayer}></Selected>
       )}
     </div>
   );

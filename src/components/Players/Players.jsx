@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import Player from "../Player/Player";
 
-const Players = ({ playersPromise, singlePlayer }) => {
+const Players = ({ playersPromise, availableBalance, setBalance, selectPlayer, setSelectPlayer }) => {
   const playersData = use(playersPromise);
   // console.log(playersData);
 
@@ -12,7 +12,10 @@ const Players = ({ playersPromise, singlePlayer }) => {
         {playersData.map((player) => (
           <Player 
           key={player.id}
-          singlePlayer={singlePlayer}
+          setSelectPlayer={setSelectPlayer}
+          selectPlayer={selectPlayer}
+          setBalance={setBalance}
+          availableBalance={availableBalance}
           player={player}></Player>
         ))}
       </div>

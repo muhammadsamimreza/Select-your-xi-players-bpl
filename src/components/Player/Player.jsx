@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Player = ({ player, singlePlayer }) => {
+const Player = ({ player, availableBalance, setBalance, selectPlayer, setSelectPlayer}) => {
   // console.log(player);
   const {
     image,
@@ -49,10 +49,11 @@ const Player = ({ player, singlePlayer }) => {
             </div>
             <button
               className={`btn ${isSeclected ? "bg-black text-white" : ""}`}
-              onClick={() =>{
-                setSelected(!isSeclected)
-                singlePlayer(player)
-              } }
+              onClick={() => {
+                setSelected(!isSeclected);
+                setBalance(availableBalance - price);
+                setSelectPlayer([...selectPlayer, player])
+              }}
             >
               {isSeclected ? "Alredy Choosen" : "Choose Player"}
             </button>

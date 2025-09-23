@@ -1,6 +1,6 @@
 import React from "react";
 import NavImg from "../../assets/logo.png"
-const Navbar = () => {
+const Navbar = ({availableBalance}) => {
   return (
     <div className="max-w-[1200px] mx-auto">
       <div className="navbar justify-between items-center py-5">
@@ -63,7 +63,7 @@ const Navbar = () => {
           </ul>
         </div>
         <button className="btn">
-          <span>100000000</span>
+          <span>{availableBalance}</span>
           <span className="font-bold">Coin</span>
           <span>
             <img src="https://i.ibb.co.com/XZrh1JLd/Currency.png" alt="" />
