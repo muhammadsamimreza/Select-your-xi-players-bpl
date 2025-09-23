@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import Player from "../Player/Player";
 
-const Players = ({ playersPromise }) => {
+const Players = ({ playersPromise, singlePlayer }) => {
   const playersData = use(playersPromise);
   // console.log(playersData);
 
@@ -10,7 +10,10 @@ const Players = ({ playersPromise }) => {
       <h1>Available: {playersData.length} </h1>
       <div className="grid grid-cols-4 gap-5">
         {playersData.map((player) => (
-          <Player player={player}></Player>
+          <Player 
+          key={player.id}
+          singlePlayer={singlePlayer}
+          player={player}></Player>
         ))}
       </div>
     </div>

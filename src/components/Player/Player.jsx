@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const Player = ({ player }) => {
-  console.log(player);
+const Player = ({ player, singlePlayer }) => {
+  // console.log(player);
   const {
     image,
     name,
@@ -12,12 +12,13 @@ const Player = ({ player }) => {
     price,
     rating,
   } = player;
-   const [isSeclected, setSelected] = useState(false);
+  const [isSeclected, setSelected] = useState(false);
   return (
     <div>
       <div className="card bg-base-100 shadow-sm">
         <figure>
-          <img className="w-full h-[200px] object-cover p-4 rounded-[20px]"
+          <img
+            className="w-full h-[200px] object-cover p-4 rounded-[20px]"
             src={image}
             alt="Player-Image"
           />
@@ -25,11 +26,13 @@ const Player = ({ player }) => {
         <div className="p-4 space-y-2">
           <h2 className="card-title">{name}</h2>
           <div className="flex justify-between items-center">
-           <div className="flex items-center gap-3">
-            <span><img className="w-5" src={flag_image} alt="" /></span>
-           <span>{country}</span>
-           </div>
-           <span className="btn">{category} </span>
+            <div className="flex items-center gap-3">
+              <span>
+                <img className="w-5" src={flag_image} alt="" />
+              </span>
+              <span>{country}</span>
+            </div>
+            <span className="btn">{category} </span>
           </div>
           <div className="flex items-center justify-between font-semibold">
             <span>Rating</span>
@@ -41,10 +44,18 @@ const Player = ({ player }) => {
           </div>
           <div className="flex justify-between items-center">
             <div className="font-bold">
-                <span>$</span>
-                <span>{price}</span>
+              <span>$</span>
+              <span>{price}</span>
             </div>
-            <button className={`btn ${isSeclected?"bg-black text-white":""}`}  onClick={()=>setSelected(!isSeclected)}>{isSeclected?"Alredy Choosen":"Choose Player"}</button>
+            <button
+              className={`btn ${isSeclected ? "bg-black text-white" : ""}`}
+              onClick={() =>{
+                setSelected(!isSeclected)
+                singlePlayer(player)
+              } }
+            >
+              {isSeclected ? "Alredy Choosen" : "Choose Player"}
+            </button>
           </div>
         </div>
       </div>
